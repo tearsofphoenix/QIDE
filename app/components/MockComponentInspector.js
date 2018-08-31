@@ -1,10 +1,10 @@
 import React, {PureComponent} from 'react';
-import SegmentButton from './SegmentButton';
-import Selector from './Selector';
-import ColorPicker from './ColorPicker';
-import Toggle from './Toggle';
-import Checkbox from './Checkbox';
-import NumberInput from './NumberInput';
+import SegmentButton from '../ui/SegmentButton';
+import Selector from '../ui/Selector';
+import ColorPicker from '../ui/ColorPicker';
+import Toggle from '../ui/Toggle';
+import Checkbox from '../ui/Checkbox';
+import NumberInput from '../ui/NumberInput';
 
 export default class MockComponentInspector extends PureComponent {
   constructor(props) {

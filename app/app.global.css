@@ -53,3 +53,29 @@ a:hover {
 .q-editor {
   height: 100%;
 }
+
+.q-ctx-menu-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 10px;
+}
+
+.q-ctx-menu {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.q-ctx-menu-item span {
+  cursor: context-menu;
+}
+
+.q-ctx-menu-item:hover {
+  background: #6494ed;
+  color: #ddd;
+}
+
+.q-ctx-menu-splitter {
+  border-bottom: 1px solid #1a1d23;
+}

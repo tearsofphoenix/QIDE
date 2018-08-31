@@ -6,7 +6,7 @@ require('../lib/codemirror/qasm')
 
 type Props = {
   tab: {path: string},
-  id: string,
+  id: string | number,
   addEditorInstance: (CodeMirror, string | number) => void
 }
 

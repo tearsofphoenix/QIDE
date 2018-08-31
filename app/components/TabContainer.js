@@ -1,23 +1,19 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Tab from './Tab';
+import Tab from '../ui/Tab';
 
 const TabContainer = ({
   appState,
   setActiveTab,
   closeTab
 }) => {
-  const tabs = [];
-    for (let i = 0; i < appState.openTabs.length; i++) {
-      tabs.push(
-        <Tab 
-          key={i} 
-          name={appState.openTabs[i].name} 
-          setActiveTab={setActiveTab} 
-          id={appState.openTabs[i].id} 
-          closeTab={closeTab}
-        />);
-    }
+  const tabs = appState.openTabs.map((looper) => <Tab
+    key={looper.id}
+    name={looper.name}
+    setActiveTab={setActiveTab}
+    id={looper.id}
+    closeTab={closeTab}
+  />)
     return (
       <ul className="list-inline tab-bar inset-panel tab-container">
         {tabs}

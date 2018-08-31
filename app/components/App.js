@@ -4,6 +4,7 @@ import TextEditorPane from './TextEditorPane'
 import DeletePrompt from './DeletePrompt'
 import MockComponentTree from './MockComponentTree'
 import MockComponentInspector from './MockComponentInspector'
+import {ContextMenu, ContextMenuItem} from '../ui'
 
 const { ipcRenderer } = require('electron')
 const fs = require('fs')
@@ -438,6 +439,13 @@ export default class App extends React.Component {
                     name={path.basename(selectedItem.path)}
                   />
                 : <span />}
+
+              <ContextMenu>
+                <ContextMenuItem name="New File" shortcut="Ctrl+N" />
+                <ContextMenuItem name="New Folder" shortcut="Ctrl+N" />
+                <ContextMenuItem splitter />
+                <ContextMenuItem name="New Folder" shortcut="Ctrl+N" />
+              </ContextMenu>
 
               <MockComponentTree />
 

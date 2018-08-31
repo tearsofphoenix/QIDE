@@ -3026,13 +3026,13 @@ th {
 }
 @font-face {
   font-family: 'Octicons Regular';
-  src: url('octicons-2.1.2.woff') format('woff');
+  src: url('./octicons-2.1.2.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'Octicons Regular';
-  src: url('octicons.woff') format('woff');
+  src: url('./octicons.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
