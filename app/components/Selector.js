@@ -1,9 +1,9 @@
 import React, {PureComponent} from 'react'
 
 type Props = {
-  label: string,
+  label: ?string,
   options: string[],
-  value: string,
+  value: ?string,
   onChange: (string) => void
 }
 

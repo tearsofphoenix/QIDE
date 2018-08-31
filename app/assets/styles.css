@@ -7607,7 +7607,6 @@ ride-panel.tool-panel:empty {
   background: #7d9cda;
 }
 ride-pane-container {
-  padding-top: 0.5em;
 }
 ride-pane-container ride-pane {
   position: relative;
@@ -7644,7 +7643,7 @@ ride-pane-container ride-pane-resize-handle.vertical.vertical {
   margin: 0;
 }
 ride-pane-container ride-pane-resize-handle.horizontal.horizontal {
-  width: 0.5em;
+  width: 0.1em;
   height: initial;
 }
 ride-pane-container ride-pane-resize-handle.vertical.vertical {
@@ -9585,18 +9584,15 @@ label.tree_label:hover:before {
 }
 .plus-icon {
   font-size: 15px;
-  <<<<<<<HEAD
-<<<<<<< HEAD
-  float: right;
+  <<<<<<<head<<<<<<<headfloat: right;
   =======/*float:right;*/
   position: absolute;
   right: 0px;
-  >>>>>>>b0ab8c17... rename working, also if tab is open will change the name on there
+  >>>>>>>b0ab8c17...renameworking,alsoiftabis open will change the name on there
 =======
   position: absolute;
   right: 0px;
-  >>>>>>>cfa5ae64... fixed styles
-  cursor: pointer;
+  >>>>>>>cfa5ae64...fixedstylescursor: pointer;
 }
 .create-menu {
   padding: 0px 10px 10px 10px;

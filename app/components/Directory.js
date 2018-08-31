@@ -1,9 +1,9 @@
-import React from 'react';
-import File from './File';
-import CreateMenu from './CreateMenu';
-import CreateForm from './CreateForm';
-import RenameForm from './RenameForm';
-import PropTypes from 'prop-types';
+import React from 'react'
+import File from './File'
+import CreateMenu from './CreateMenu'
+import CreateForm from './CreateForm'
+import RenameForm from './RenameForm'
+import PropTypes from 'prop-types'
 
 const Directory = ({
   directory,
@@ -19,40 +19,36 @@ const Directory = ({
   renameHandler,
   id
 }) => {
-  const arr = [];
-  let uniqueId;
-  for (var i = 0; i < directory.subdirectories.length; i++) {
-    arr.push(
-      <Directory
-        key={directory.subdirectories[i].id}
-        id={directory.subdirectories[i].id}
-        directory={directory.subdirectories[i]}
-        dblClickHandler= {dblClickHandler} 
-        clickHandler={clickHandler}
-        selectedItem={selectedItem}
-        openCreateMenu={openCreateMenu}
-        openMenuId={openMenuId}
-        createMenuInfo={createMenuInfo}
-        createMenuHandler={createMenuHandler}
-        createItem={createItem}
-        renameFlag={renameFlag}
-        renameHandler={renameHandler}
-      />)
-  }
-  for (var i = 0; i < directory.files.length; i++) {
-    arr.push(
-      <File
-        key={directory.files[i].id}
-        id={directory.files[i].id}
-        file={directory.files[i]}
-        dblClickHandler= {dblClickHandler} 
-        clickHandler={clickHandler}
-        selectedItem={selectedItem}
-        renameFlag={renameFlag}
-        renameHandler={renameHandler}
-      />)
-  }
-  let item = (
+  const arr = directory.subdirectories.map((looper) => <Directory
+    key={looper.id}
+    id={looper.id}
+    directory={looper}
+    dblClickHandler= {dblClickHandler}
+    clickHandler={clickHandler}
+    selectedItem={selectedItem}
+    openCreateMenu={openCreateMenu}
+    openMenuId={openMenuId}
+    createMenuInfo={createMenuInfo}
+    createMenuHandler={createMenuHandler}
+    createItem={createItem}
+    renameFlag={renameFlag}
+    renameHandler={renameHandler}
+  />)
+
+  directory.files.forEach(file => {
+    arr.push(<File
+      key={file.id}
+      id={file.id}
+      file={file}
+      dblClickHandler= {dblClickHandler}
+      clickHandler={clickHandler}
+      selectedItem={selectedItem}
+      renameFlag={renameFlag}
+      renameHandler={renameHandler}
+    />)
+  })
+
+  const item = (
     <div
       className="list-item"
       onClick={clickHandler.bind(null, id, directory.path, directory.type)}
@@ -60,7 +56,7 @@ const Directory = ({
       <span className="icon icon-file-directory">
         {directory.name}
       </span>
-      <span className="plus-icon" onClick={openCreateMenu.bind(null, id, directory.path)}>+</span>
+      <span className="plus-icon" onClick={() => openCreateMenu(id, directory.path)}>+</span>
       {openMenuId === id ? <CreateMenu createMenuHandler={createMenuHandler} id={id} /> : <span />}
       {createMenuInfo.id === id ? <CreateForm createItem={createItem} /> : <span />}
     </div>)
@@ -99,4 +95,4 @@ Directory.propTypes = {
   id: PropTypes.number.isRequired
 }
 
-export default Directory;
+export default Directory

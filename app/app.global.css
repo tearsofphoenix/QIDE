@@ -49,3 +49,7 @@ a:hover {
   text-decoration: none;
   cursor: pointer;
 }
+
+.q-editor {
+  height: 100%;
+}

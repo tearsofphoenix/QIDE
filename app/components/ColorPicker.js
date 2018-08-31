@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react'
 
 type Props = {
-  label: string,
+  label: ?string,
   value: string,
   onChange: (string) => void
 }

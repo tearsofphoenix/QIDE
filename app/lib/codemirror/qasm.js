@@ -2,7 +2,7 @@
 // Distributed under an MIT license: https://codemirror.net/LICENSE
 
 // QASM mode.
-/* es-lint: disable */
+/* eslint-disable */
 (function(mod) {
   if (typeof exports === "object" && typeof module === "object") // CommonJS
     mod(require("codemirror/lib/codemirror"));
@@ -13,7 +13,7 @@
 })(function(CodeMirror) {
   "use strict";
 
-  CodeMirror.defineMode("lua", function(config, parserConfig) {
+  CodeMirror.defineMode("qasm", function(config, parserConfig) {
     var indentUnit = config.indentUnit;
 
     function prefixRE(words) {
@@ -26,33 +26,19 @@
 
     // long list of standard functions from lua manual
     var builtins = wordRE([
-      "CX", "h", "U"
+      "CX", "h", "U", 'cnot', 'CNOT', 'syndrome', 'x', 'X', 'y', 'Y', 'z', 'Z'
     ]);
-    var keywords = wordRE(["include", "gate","qreg","cqreg", "measure", "reset", "gatename", "barrier", "opaque"]);
+    var keywords = wordRE(["include", 'if', 'qubit', "gate","qreg","creg", "measure", "reset", "gatename", "barrier", "opaque"]);
 
-    var indentTokens = wordRE(["function", "if","repeat","do", "\\(", "{"]);
-    var dedentTokens = wordRE(["end", "until", "\\)", "}"]);
-    var dedentPartial = prefixRE(["end", "until", "\\)", "}", "else", "elseif"]);
-
-    function readBracket(stream) {
-      var level = 0;
-      while (stream.eat("=")) ++level;
-      stream.eat("[");
-      return level;
-    }
+    var indentTokens = wordRE(["\\(", "{"]);
+    var dedentTokens = wordRE(["\\)", "}"]);
+    var dedentPartial = prefixRE(["\\)", "}"]);
 
     function normal(stream, state) {
       var ch = stream.next();
-      if (ch == "-" && stream.eat("-")) {
-        if (stream.eat("[") && stream.eat("["))
-          return (state.cur = bracketed(readBracket(stream), "comment"))(stream, state);
-        stream.skipToEnd();
-        return "comment";
-      }
+
       if (ch == "\"" || ch == "'")
         return (state.cur = string(ch))(stream, state);
-      if (ch == "[" && /[\[=]/.test(stream.peek()))
-        return (state.cur = bracketed(readBracket(stream), "string"))(stream, state);
       if (/\d/.test(ch)) {
         stream.eatWhile(/[\w.%]/);
         return "number";
@@ -62,19 +48,6 @@
         return "variable";
       }
       return null;
-    }
-
-    function bracketed(level, style) {
-      return function(stream, state) {
-        var curlev = null, ch;
-        while ((ch = stream.next()) != null) {
-          if (curlev == null) {if (ch == "]") curlev = 0;}
-          else if (ch == "=") ++curlev;
-          else if (ch == "]" && curlev == level) { state.cur = normal; break; }
-          else curlev = null;
-        }
-        return style;
-      };
     }
 
     function string(quote) {
