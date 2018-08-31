@@ -1,0 +1,18 @@
+{
+  "name": "QIDE",
+  "productName": "QIDE",
+  "version": "1.0.0",
+  "description": "Quantum ASM IDE",
+  "main": "./main.prod.js",
+  "author": {
+    "name": "Isaac Liu",
+    "email": "tearsofphoenix@icloud.com",
+    "url": "https://github.com/tearsofphoenix"
+  },
+  "scripts": {
+    "electron-rebuild": "node -r babel-register ../internals/scripts/ElectronRebuild.js",
+    "postinstall": "yarn electron-rebuild"
+  },
+  "license": "MIT",
+  "dependencies": {}
+}
