@@ -1,21 +1,21 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import FileTree from './FileTree'
-import TextEditorPane from './TextEditorPane'
-import DeletePrompt from './DeletePrompt'
+import FileTree from '../../file/ui/FileTree'
+import TextEditorPane from '../../editor/ui/TextEditorPane'
+import DeletePrompt from '../../file/ui/DeletePrompt'
 import MockComponentTree from './MockComponentTree'
 import MockComponentInspector from './MockComponentInspector'
 
-import {ContextMenu, ContextMenuItem} from '../modules/menu/ui'
-import {showContextMenu, hideContextMenu} from '../modules/menu/reducer/actions'
-import type {Position} from '../modules/base/types/position'
-import type {MenuStateType} from '../modules/menu/reducer'
+import {ContextMenu, ContextMenuItem} from '../../menu/ui/index'
+import {showContextMenu, hideContextMenu} from '../../menu/reducer/actions'
+import type {Position} from '../../base/types/position'
+import type {MenuStateType} from '../../menu/reducer/index'
 
 const { ipcRenderer } = require('electron')
 const fs = require('fs')
 const path = require('path')
-const { getTree } = require('../lib/file-tree')
-const { File, Directory } = require('../lib/item-schema')
+const { getTree } = require('../../../lib/file-tree')
+const { File, Directory } = require('../../../lib/item-schema')
 
 type Props = {
   menu?: MenuStateType,

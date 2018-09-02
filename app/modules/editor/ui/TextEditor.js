@@ -2,7 +2,7 @@ import React from 'react'
 import CodeMirror from 'react-codemirror'
 import fs from 'fs'
 
-require('../lib/codemirror/qasm')
+require('../../../lib/codemirror/qasm')
 
 type Props = {
   tab: {path: string},

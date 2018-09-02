@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Tab from '../ui/Tab';
+import Tab from '../../base/ui/Tab';
 
 const TabContainer = ({
   appState,

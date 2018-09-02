@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import TextEditor from './TextEditor'
-import TabContainer from './TabContainer'
+import TabContainer from '../../core/ui/TabContainer'
 
 const TextEditorPane = ({ appState, addEditorInstance, setActiveTab, closeTab }) => {
   const {openTabs} = appState
