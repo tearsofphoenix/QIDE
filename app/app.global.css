@@ -53,3 +53,7 @@ a:hover {
 .q-editor {
   height: 100%;
 }
+
+.q-mute {
+  user-select: none;
+}
