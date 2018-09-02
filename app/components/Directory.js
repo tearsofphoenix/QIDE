@@ -1,9 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import File from './File'
 import CreateMenu from './CreateMenu'
 import CreateForm from './CreateForm'
 import RenameForm from './RenameForm'
-import PropTypes from 'prop-types'
 
 const Directory = ({
   directory,
@@ -17,7 +17,8 @@ const Directory = ({
   createItem,
   renameFlag,
   renameHandler,
-  id
+  id,
+  contextMenuHandler
 }) => {
   const arr = directory.subdirectories.map((looper) => <Directory
     key={looper.id}
@@ -33,6 +34,7 @@ const Directory = ({
     createItem={createItem}
     renameFlag={renameFlag}
     renameHandler={renameHandler}
+    contextMenuHandler={contextMenuHandler}
   />)
 
   directory.files.forEach(file => {
@@ -45,14 +47,12 @@ const Directory = ({
       selectedItem={selectedItem}
       renameFlag={renameFlag}
       renameHandler={renameHandler}
+      contextMenuHandler={contextMenuHandler}
     />)
   })
 
   const item = (
-    <div
-      className="list-item"
-      onClick={clickHandler.bind(null, id, directory.path, directory.type)}
-    >
+    <div className="list-item" onClick={clickHandler.bind(null, id, directory.path, directory.type)} onContextMenu={event => contextMenuHandler(event, directory)}>
       <span className="icon icon-file-directory">
         {directory.name}
       </span>
@@ -71,11 +71,9 @@ const Directory = ({
     )
   } else {
     return (
-      <li
-        className={selectedItem.id === id ? 'list-nested-item collapsed selected' : 'list-nested-item collapsed'}
-      >
+      <li className={selectedItem.id === id ? 'list-nested-item collapsed selected' : 'list-nested-item collapsed'} >
         {renameFlag && selectedItem.id === id ? <RenameForm renameHandler={renameHandler} /> : item}
-      </li>
+      </li >
     )
   }
 }
@@ -92,7 +90,8 @@ Directory.propTypes = {
   createItem: PropTypes.func.isRequired,
   renameFlag: PropTypes.bool.isRequired,
   renameHandler: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired
+  id: PropTypes.number.isRequired,
+  contextMenuHandler: PropTypes.func.isRequired
 }
 
 export default Directory

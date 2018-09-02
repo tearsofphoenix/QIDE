@@ -1,0 +1,43 @@
+
+.q-ctx-menu-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+}
+
+.q-ctx-menu {
+  min-width: 270px;
+  width: 270px;
+  background-color: #23272f;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 1px 1px 10px 0 rgba(0, 0, 0, 0.1);
+}
+
+.q-ctx-menu-item span {
+  cursor: default;
+}
+
+.q-ctx-menu-item:hover {
+  background: #2f65ca;
+  color: #ddd;
+}
+
+.q-ctx-menu-splitter {
+  border-bottom: 1px solid #515151;
+}
+
+.head {
+  display: flex;
+}
+
+.icon {
+  display: flex;
+  width: 25px;
+  min-width: 25px;
+}
+
+.tail {
+  margin-right: 12px;
+}

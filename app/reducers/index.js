@@ -1,11 +1,18 @@
 // @flow
-import { combineReducers } from 'redux';
-import { routerReducer as router } from 'react-router-redux';
-import counter from './counter';
+import { combineReducers } from 'redux'
+import { routerReducer as router } from 'react-router-redux'
+import counter from './counter'
+import menuModuleLoader from '../modules/menu'
 
-const rootReducer = combineReducers({
+const reducers = {
   counter,
   router
-});
+}
 
-export default rootReducer;
+menuModuleLoader({reducers})
+
+console.log(14, reducers)
+
+const rootReducer = combineReducers(reducers)
+
+export default rootReducer

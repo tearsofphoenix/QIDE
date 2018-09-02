@@ -13,7 +13,8 @@ const FileTree = ({
   createMenuHandler,
   createItem,
   renameFlag,
-  renameHandler
+  renameHandler,
+  contextMenuHandler
 }) => {
   if (fileTree) {
     return (
@@ -39,6 +40,7 @@ const FileTree = ({
                     createItem={createItem}
                     renameFlag={renameFlag}
                     renameHandler={renameHandler}
+                    contextMenuHandler={contextMenuHandler}
                   />
                 </ul>
               </div>
@@ -77,7 +79,8 @@ FileTree.propTypes = {
   createMenuHandler: PropTypes.func.isRequired,
   createItem: PropTypes.func.isRequired,
   renameFlag: PropTypes.bool.isRequired,
-  renameHandler: PropTypes.func.isRequired
+  renameHandler: PropTypes.func.isRequired,
+  contextMenuHandler: PropTypes.func.isRequired
 }
 
 export default FileTree

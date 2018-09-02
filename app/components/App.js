@@ -1,10 +1,15 @@
 import React from 'react'
+import {connect} from 'react-redux'
 import FileTree from './FileTree'
 import TextEditorPane from './TextEditorPane'
 import DeletePrompt from './DeletePrompt'
 import MockComponentTree from './MockComponentTree'
 import MockComponentInspector from './MockComponentInspector'
-import {ContextMenu, ContextMenuItem} from '../ui'
+
+import {ContextMenu, ContextMenuItem} from '../modules/menu/ui'
+import {showContextMenu, hideContextMenu} from '../modules/menu/reducer/actions'
+import type {Position} from '../modules/base/types/position'
+import type {MenuStateType} from '../modules/menu/reducer'
 
 const { ipcRenderer } = require('electron')
 const fs = require('fs')
@@ -12,10 +17,17 @@ const path = require('path')
 const { getTree } = require('../lib/file-tree')
 const { File, Directory } = require('../lib/item-schema')
 
+type Props = {
+  menu?: MenuStateType,
+  showContextMenu?: (Position) => void,
+  hideContextMenu?: () => void
+}
+
 /**
  * @class App
  */
-export default class App extends React.Component {
+@connect(({menu}) => ({menu}), {showContextMenu, hideContextMenu})(App)
+export default  class App extends React.Component<Props> {
   constructor() {
     super()
     this.state = {
@@ -392,6 +404,15 @@ export default class App extends React.Component {
     return openTabs.findIndex(looper => looper.path === file.path)
   }
 
+  contextMenuHandler = (event, file) => {
+    event.preventDefault()
+    event.stopPropagation()
+    console.log(event.pageX, event.pageY, file)
+    const position = {x: event.pageX, y: event.pageY}
+    this.setState({contextMenuPosition: position})
+    this.props.showContextMenu(position)
+  }
+
   // closes any open dialogs, handles clicks on anywhere besides the active open menu/form
   closeOpenDialogs = () => {
     const {selectedItem} = this.state
@@ -410,7 +431,10 @@ export default class App extends React.Component {
   }
 
   render() {
-    const {openMenuId, createMenuInfo, fileTree, selectedItem, renameFlag, deletePromptOpen} = this.state
+    const {openMenuId, createMenuInfo, fileTree, selectedItem, renameFlag, deletePromptOpen, contextMenuPosition} = this.state
+    const {menu = {}} = this.props
+    const {show} = menu
+
     return (
       <ride-workspace className="scrollbars-visible-always" onClick={this.closeOpenDialogs}>
 
@@ -432,6 +456,7 @@ export default class App extends React.Component {
                 clickHandler={this.clickHandler}
                 renameFlag={renameFlag}
                 renameHandler={this.renameHandler}
+                contextMenuHandler={this.contextMenuHandler}
               />
               {deletePromptOpen
                 ? <DeletePrompt
@@ -439,13 +464,6 @@ export default class App extends React.Component {
                     name={path.basename(selectedItem.path)}
                   />
                 : <span />}
-
-              <ContextMenu>
-                <ContextMenuItem name="New File" shortcut="Ctrl+N" />
-                <ContextMenuItem name="New Folder" shortcut="Ctrl+N" />
-                <ContextMenuItem splitter />
-                <ContextMenuItem name="New Folder" shortcut="Ctrl+N" />
-              </ContextMenu>
 
               <MockComponentTree />
 
@@ -470,6 +488,13 @@ export default class App extends React.Component {
 
           </ride-pane-axis>
         </ride-pane-container>
+
+        {show && <ContextMenu position={contextMenuPosition}>
+          <ContextMenuItem name="New File" shortcut="Ctrl+N" />
+          <ContextMenuItem name="New Folder" shortcut="Ctrl+N" />
+          <ContextMenuItem splitter />
+          <ContextMenuItem name="New Folder" shortcut="Ctrl+N" />
+        </ContextMenu>}
 
       </ride-workspace>
     )

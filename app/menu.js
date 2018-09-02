@@ -86,6 +86,13 @@ export default class MenuBuilder {
         }
       ]
     }
+    const subeMenuFile = {
+      label: 'File',
+      submenu: [
+        { label: 'Open', click: this.openProject },
+        { label: 'Save', accelerator: 'Command+S', click: this.saveTab },
+      ]
+    }
     const subMenuEdit = {
       label: 'Edit',
       submenu: [
@@ -161,26 +168,6 @@ export default class MenuBuilder {
           click() {
             shell.openExternal('http://electron.atom.io')
           }
-        },
-        {
-          label: 'Documentation',
-          click() {
-            shell.openExternal(
-              'https://github.com/atom/electron/tree/master/docs#readme'
-            )
-          }
-        },
-        {
-          label: 'Community Discussions',
-          click() {
-            shell.openExternal('https://discuss.atom.io/c/electron')
-          }
-        },
-        {
-          label: 'Search Issues',
-          click() {
-            shell.openExternal('https://github.com/atom/electron/issues')
-          }
         }
       ]
     }
@@ -188,7 +175,7 @@ export default class MenuBuilder {
     const subMenuView =
       process.env.NODE_ENV === 'development' ? subMenuViewDev : subMenuViewProd
 
-    return [subMenuAbout, subMenuEdit, subMenuView, subMenuWindow, subMenuHelp]
+    return [subMenuAbout, subeMenuFile, subMenuEdit, subMenuView, subMenuWindow, subMenuHelp]
   }
 
   buildDefaultTemplate() {
