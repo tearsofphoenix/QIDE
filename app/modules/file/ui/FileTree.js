@@ -18,7 +18,7 @@ const FileTree = ({
 }) => {
   if (fileTree) {
     return (
-      <div className="item-views">
+      <div className="item-views q-mute">
         <div className="styleguide pane-item">
           <header className="styleguide-header">
             <h5>File Directory</h5>
@@ -52,7 +52,7 @@ const FileTree = ({
     )
   }
     return (
-      <div className="item-views">
+      <div className="item-views q-mute">
         <div className="styleguide pane-item">
           <header className="styleguide-header">
             <h5>File Directory</h5>

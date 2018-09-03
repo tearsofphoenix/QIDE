@@ -13,8 +13,7 @@ body {
   color: white;
   height: 100vh;
   background-color: #23272f;
-  font-family: Consolas, 'Noto Sans S Chinese Regular', Helvetica,
-    Helvetica Neue, serif !important;
+  font-family: Consolas, 'Noto Sans S Chinese Regular', Helvetica, Helvetica Neue, serif !important;
   overflow-y: hidden;
 }
 
@@ -56,4 +55,9 @@ a:hover {
 
 .q-mute {
   user-select: none;
+}
+
+.CodeMirror {
+  font-family: Consolas, 'Noto Sans S Chinese Regular', Helvetica, Helvetica Neue, serif !important;
+  font-size: 12px;
 }

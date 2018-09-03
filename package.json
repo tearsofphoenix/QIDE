@@ -203,6 +203,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.2.0",
+    "@types/react-dom": "^16.0.7",
     "classnames": "^2.2.6",
     "codemirror": "^5.40.0",
     "devtron": "^1.4.0",

@@ -65,11 +65,14 @@ export default class MockComponentTree extends Component {
     this.state = {data: originData}
   }
 
-  toggleCollapse = ({indexPath = []}) => {
+  toggleCollapse = ({id, indexPath = []}) => {
     let {data} = this.state
     data = {...data}
     const node = getElementAt(data, indexPath, 'nodes')
     node.collapse = !node.collapse
+    console.log(node, indexPath)
+    data.dirtyTreeID = id
+    data.timestamp = Date.now()
     this.setState({data})
   }
 

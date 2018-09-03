@@ -26,7 +26,7 @@
 
     // long list of standard functions from lua manual
     var builtins = wordRE([
-      "CX", "h", "U", 'cnot', 'CNOT', 'syndrome', 'x', 'X', 'y', 'Y', 'z', 'Z'
+      "CX", 'cx', "h", "U", 'cnot', 'CNOT', 'x', 'X', 'y', 'Y', 'z', 'Z'
     ]);
     var keywords = wordRE(["include", 'if', 'qubit', "gate","qreg","creg", "measure", "reset", "gatename", "barrier", "opaque"]);
 

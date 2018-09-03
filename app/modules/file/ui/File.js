@@ -1,21 +1,16 @@
-import React from 'react';
-import RenameForm from './RenameForm';
-import PropTypes from 'prop-types';
+import React from 'react'
+import PropTypes from 'prop-types'
 
-const File = ({ file, dblClickHandler, selectedItem, id, clickHandler, renameFlag, renameHandler, contextMenuHandler }) => {
-  return (
+const File = ({ file, dblClickHandler, selectedItem, id, clickHandler, contextMenuHandler }) => (
     <li
       className={selectedItem.id === id ? 'list-item selected' : 'list-item'}
       onDoubleClick={dblClickHandler.bind(null, file)}
       onClick={clickHandler.bind(null, id, file.path, file.type)}
       onContextMenu={(event) => contextMenuHandler(event, file)}
     >
-      {renameFlag && selectedItem.id === id
-        ? <RenameForm renameHandler={renameHandler} />
-        : <span className="icon icon-file-text">{file.name}</span>}
+      <span className="icon icon-file-text">{file.name}</span>
     </li>
-  );
-};
+  )
 
 File.propTypes = {
   file: PropTypes.object.isRequired,
@@ -23,9 +18,7 @@ File.propTypes = {
   selectedItem: PropTypes.object.isRequired,
   id: PropTypes.number.isRequired,
   clickHandler: PropTypes.func.isRequired,
-  renameFlag: PropTypes.bool.isRequired,
-  renameHandler: PropTypes.func.isRequired,
   contextMenuHandler: PropTypes.func.isRequired
-};
+}
 
-export default File;
+export default File

@@ -12,9 +12,12 @@ export function getElementAt(array, indexPath: ?IndexPath = [], field: ?string) 
   if (indexPath.length > 0) {
     if (typeof field !== 'undefined') {
       looper = looper[field]
-      indexPath.forEach((idx) => {
+      const len = indexPath.length
+      indexPath.forEach((idx, i) => {
         looper = looper[idx]
-        looper = looper[field]
+        if (i !== len - 1) {
+          looper = looper[field]
+        }
       })
     } else {
       indexPath.forEach((idx) => looper = looper[idx])
