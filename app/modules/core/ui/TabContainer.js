@@ -13,6 +13,7 @@ const TabContainer = ({
     setActiveTab={setActiveTab}
     id={looper.id}
     closeTab={closeTab}
+    active={appState.activeTab === looper.id}
   />)
     return (
       <ul className="list-inline tab-bar inset-panel tab-container">

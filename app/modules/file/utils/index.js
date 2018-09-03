@@ -1,3 +1,5 @@
+import {fileExtension} from '../../base/lib'
+
 type FileCheck = {
   name: string,
   match: (ext: string) => boolean
@@ -52,10 +54,7 @@ const kFileList: Array<FileCheck> = [
  * @return {string}
  */
 export function classForFileName(fileName) {
-  const parts = fileName.split('.')
-  const extName = parts[parts.length - 1]
-  console.log(extName)
+  const extName = fileExtension(fileName)
   const obj = kFileList.find(({match}) => match(extName))
-  console.log(obj)
   return obj.name
 }

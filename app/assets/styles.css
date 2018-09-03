@@ -7919,13 +7919,15 @@ progress:indeterminate {
 }
 .tab-bar .tab .title {
   position: relative;
-  height: inherit;
+  /*height: inherit;*/
   text-align: center;
-  border-bottom: 4px solid #2f65ca;
   text-overflow: clip;
   background-color: #23272f;
   background-clip: content-box;
   backface-visibility: hidden;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  height: 100%;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
   width: 170px;
   float: left;
 }
@@ -7942,11 +7944,10 @@ progress:indeterminate {
   font-size: 1em;
   width: 1.5em;
   height: 1.5em;
+  margin-left: -1.5em;
   line-height: 1.5;
   border-radius: 3px;
   overflow: hidden;
-  transform: scale(0);
-  transition: transform 0.08s;
   float: right;
   position: relative;
 }
@@ -7973,10 +7974,7 @@ progress:indeterminate {
   -webkit-font-smoothing: antialiased;
   text-decoration: none;
 }
-.tab-bar .tab:hover .close-icon {
-  transform: scale(1);
-  transition-duration: 0.16s;
-}
+
 .tab-bar .tab,
 .tab-bar .tab.active {
   flex: 1;

@@ -25,3 +25,16 @@ export function getElementAt(array, indexPath: ?IndexPath = [], field: ?string) 
   }
   return looper
 }
+
+/**
+ *
+ * @param {string} fileName
+ * @return {string}
+ */
+export function fileExtension(fileName) {
+  if (typeof fileName === 'string') {
+    const parts = fileName.split('.')
+    return parts[parts.length - 1]
+  }
+  return ''
+}
