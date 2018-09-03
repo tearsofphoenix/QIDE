@@ -437,7 +437,7 @@ class Main extends React.Component<Props> {
       <ride-workspace className="scrollbars-visible-always" onClick={this.closeOpenDialogs}>
 
         <ride-panel-container className="header">
-          <Toolbar icons={[]}/>
+          <div className="q-toolbar"><Toolbar icons={[]}/></div>
         </ride-panel-container>
 
         <ride-pane-container>

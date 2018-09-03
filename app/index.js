@@ -3,9 +3,13 @@ import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import Root from './modules/core/ui/Root'
 import { configureStore, history } from './store/configureStore'
+import context from './modules/context'
+import {kAppStore} from './modules/context/constants'
 import './app.global.css'
 
 const store = configureStore()
+
+context.set(kAppStore, store)
 
 render(
   <AppContainer>

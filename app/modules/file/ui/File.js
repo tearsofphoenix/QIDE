@@ -1,16 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {classForFileName} from '../utils'
 
-const File = ({ file, dblClickHandler, selectedItem, id, clickHandler, contextMenuHandler }) => (
+const File = ({ file, dblClickHandler, selectedItem, id, clickHandler, contextMenuHandler }) => {
+  const cls = `icon icon-${classForFileName(file.name)}`
+  return (
     <li
       className={selectedItem.id === id ? 'list-item selected' : 'list-item'}
       onDoubleClick={dblClickHandler.bind(null, file)}
       onClick={clickHandler.bind(null, id, file.path, file.type)}
       onContextMenu={(event) => contextMenuHandler(event, file)}
     >
-      <span className="icon icon-file-text">{file.name}</span>
+      <span className={cls}>{file.name}</span>
     </li>
   )
+}
 
 File.propTypes = {
   file: PropTypes.object.isRequired,

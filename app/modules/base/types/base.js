@@ -1,11 +1,12 @@
 // @flow
-export type IndexPath = number[]
+export type IndexPath = number[];
 
 export type Position = {
   x: number,
   y: number
-}
+};
 
 export type Action = {
-  +type: string
-}
+  +type: string,
+  payload?: any
+};

@@ -13,17 +13,13 @@ body {
   color: white;
   height: 100vh;
   background-color: #23272f;
-  font-family: Consolas, 'Noto Sans S Chinese Regular', Helvetica, Helvetica Neue, serif !important;
+  font-family: Consolas, 'Noto Sans S Chinese Regular', Helvetica,
+    Helvetica Neue, serif !important;
   overflow-y: hidden;
 }
 
 #root {
   height: 100%;
-}
-
-.header {
-  height: 2.4em;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 h2 {
@@ -62,7 +58,15 @@ a:hover {
   user-select: none;
 }
 
+.q-toolbar {
+  display: flex;
+  justify-content: space-between;
+  height: 2.4em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .CodeMirror {
-  font-family: Consolas, 'Noto Sans S Chinese Regular', Helvetica, Helvetica Neue, serif !important;
+  font-family: Consolas, 'Noto Sans S Chinese Regular', Helvetica,
+    Helvetica Neue, serif !important;
   font-size: 12px;
 }
