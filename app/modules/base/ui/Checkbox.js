@@ -7,12 +7,21 @@ type Props = {
 }
 
 export default class Checkbox extends PureComponent<Props> {
+  handleOnChange = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
+    const {onChange} = this.props
+    if(onChange) {
+      onChange(e.target.checked)
+    }
+  }
+
   render() {
-    const {label, checked, onChange} = this.props
+    const {label, checked} = this.props
     return (<div className="control-wrap">
       {label && <div className="label">{label}</div>}
       <div className="controls">
-        <input className="input-checkbox" type="checkbox" checked={checked} onChange={e => onChange && onChange(e.target.checked)} />
+        <input className="input-checkbox" type="checkbox" checked={checked} onChange={this.handleOnChange} />
       </div>
     </div>)
   }

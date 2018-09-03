@@ -1,10 +1,9 @@
-import React, {PureComponent} from 'react';
-import SegmentButton from '../../base/ui/SegmentButton';
-import Selector from '../../base/ui/Selector';
-import ColorPicker from '../../base/ui/ColorPicker';
-import Toggle from '../../base/ui/Toggle';
-import Checkbox from '../../base/ui/Checkbox';
-import NumberInput from '../../base/ui/NumberInput';
+import React, {PureComponent} from 'react'
+import {
+  Control, Range,
+  SegmentButton, Selector, ColorPicker, Toggle,
+  Checkbox, NumberInput, TextInput
+} from '../../base/ui'
 
 export default class MockComponentInspector extends PureComponent {
   constructor(props) {
@@ -29,76 +28,35 @@ export default class MockComponentInspector extends PureComponent {
               <h1 className="section-heading">Controls Library</h1>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.</p>
               <h3>Button Groups &amp; Selectors</h3>
-              <div className="control">
-                <div className="control-rendered">
-                  <div className="block">
-                    <SegmentButton label="Sample" selected={sample} didSelectAt={v => this.setState({sample: v})} titles={['One', 'Two', 'Three']}/>
-                  </div>
-                </div>
-              </div>
+              <Control>
+                <SegmentButton label="Sample" selected={sample} didSelectAt={v => this.setState({sample: v})} titles={['One', 'Two', 'Three']}/>
+              </Control>
               <h3>Selectors</h3>
-              <div className="control">
-                <div className="control-rendered">
-                  <div className="block">
-                    <div className="control-wrap">
-                      <div className="label">Range</div>
-                      <div className="controls"><input className="input-range" type="range" /></div>
-                    </div>
-                  </div>
-                  <div className="block">
-                    <NumberInput label="Number" min={1} max={10} />
-                  </div>
-                  <div className="block">
-                    <ColorPicker label="color" value={color} onChange={v => this.setState({color: v})} />
-                  </div>
-                  <div className="block">
-                    <Selector label="Selector"
-                              options={['1', '2', '3']}
-                              value={selectorValue}
-                              onChange={(v) => this.setState({selectorValue: v})} />
-                  </div>
-                </div>
-              </div>
+              <Control>
+                <Range label="Range" />
+                <NumberInput label="Number" min={1} max={10} />
+                <ColorPicker label="Color" value={color} onChange={v => this.setState({color: v})} />
+                <Selector label="Selector"
+                          options={['1', '2', '3']}
+                          value={selectorValue}
+                          onChange={(v) => this.setState({selectorValue: v})} />
+              </Control>
               <h3>Booleans</h3>
-              <div className="control">
-                <div className="control-rendered">
-                  <div className="block">
-                    <Checkbox label="checkbox" checked={checked} onChange={v => this.setState({checked: v})} />
-                  </div>
-                  <div className="block">
-                    <Toggle label="Toggle" checked={checked} onChange={v => this.setState({checked: v})} />
-                  </div>
-                </div>
-              </div>
+              <Control>
+                <Checkbox label="checkbox" checked={checked} onChange={v => this.setState({checked: v})} />
+                <Toggle label="Toggle" checked={checked} onChange={v => this.setState({checked: v})} />
+              </Control>
               <h3>Inputs Alternate</h3>
-              <div className="control">
-                <div className="control-rendered">
-                  <div className="block">
-                    <div className="control-wrap">
-                      <div className="label">Text Input</div>
-                      <div className="controls">
-                        <input className="input-text" type="text" placeholder="Text" />
-                      </div>
-                    </div>
-                  </div>
-                  <div className="block">
-                    <div className="control-wrap">
-                      <div className="label">Search Input</div>
-                      <div className="controls">
-                        <input className="input-search" type="search" placeholder="Search" />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <Control>
+                <TextInput label="Text Input" type="text" placeholder="Text" />
+                <TextInput label="Search Input" type="text" placeholder="Text" />
+              </Control>
               <h3>Wide Inputs</h3>
-              <div className="control">
-                <div className="control-rendered">
-                  <input className="input-text" type="text" placeholder="Text" />
-                  <input className="input-search" type="search" placeholder="Search" />
-                  <textarea className="input-textarea" placeholder="Text Area"></textarea>
-                </div>
-              </div>
+              <Control>
+                <input className="input-text" type="text" placeholder="Text" />
+                <input className="input-search" type="search" placeholder="Search" />
+                <textarea className="input-textarea" placeholder="Text Area" />
+              </Control>
             </section>
           </main>
         </div>

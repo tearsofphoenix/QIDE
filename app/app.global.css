@@ -73,3 +73,7 @@ a:hover {
   font-family: Consolas, 'Noto Sans S Chinese Regular', Helvetica, Helvetica Neue, serif !important;
   font-size: 12px;
 }
+
+header {
+  cursor: default;
+}

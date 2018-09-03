@@ -409,9 +409,6 @@ class Main extends React.Component<Props> {
 
   // closes any open dialogs, handles clicks on anywhere besides the active open menu/form
   closeOpenDialogs = (event) => {
-    console.log(411, event)
-    event.preventDefault()
-    event.stopPropagation()
     const {selectedItem} = this.state
     selectedItem.focused = false
 
