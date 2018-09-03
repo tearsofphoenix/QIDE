@@ -1,7 +1,6 @@
 // @flow
-import type { Action } from '../../../reducers/types'
+import type {Action, Position} from '../../base/types/base'
 import { CONTEXTMENU_SHOW, CONTEXTMENU_HIDE } from './actions'
-import type {Position} from '../../base/types/position'
 
 export type MenuStateType = {
   show: boolean,

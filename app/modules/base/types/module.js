@@ -1,6 +1,13 @@
 // @flow
-import type {Author} from './author'
-import type {Dependency} from './dependency'
+export type Author = {
+  name: string,
+  email?: string,
+  url?: string
+}
+
+export type Dependency = {
+  [string]: string
+}
 
 export type Module = {
   id: string,

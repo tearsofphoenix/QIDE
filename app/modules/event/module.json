@@ -1,0 +1,10 @@
+{
+  "name": "event",
+  "id": "ide.core.event",
+  "author": {
+    "name": "Isaac Liu"
+  },
+  "version": "1.0.0",
+  "dependencies": {
+  }
+}

@@ -1,5 +1,5 @@
 // @flow
-import type {Position} from '../../base/types/position'
+import type {Position} from '../../base/types/base'
 
 export const CONTEXTMENU_SHOW = 'CONTEXTMENU_SHOW'
 

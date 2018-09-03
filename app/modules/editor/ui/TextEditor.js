@@ -1,5 +1,15 @@
 import React from 'react'
 import CodeMirror from 'react-codemirror'
+import 'codemirror/addon/fold/foldcode'
+import 'codemirror/addon/fold/foldgutter'
+import 'codemirror/addon/dialog/dialog'
+import 'codemirror/addon/display/rulers'
+import 'codemirror/addon/search/jump-to-line'
+import 'codemirror/addon/search/match-highlighter'
+import 'codemirror/addon/search/matchesonscrollbar'
+import 'codemirror/addon/search/search'
+import 'codemirror/addon/search/searchcursor'
+
 import fs from 'fs'
 
 require('../codemirror/qasm')

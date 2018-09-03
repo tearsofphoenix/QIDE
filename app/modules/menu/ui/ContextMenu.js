@@ -1,6 +1,6 @@
 import React, {PureComponent} from 'react'
 import styles from './style.css'
-import type { Position } from '../../base/types/position'
+import type { Position } from '../../base/types/base'
 
 type MenuProps = {
   children: [],

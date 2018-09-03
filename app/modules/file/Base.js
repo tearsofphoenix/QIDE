@@ -10,7 +10,7 @@ export default class Base {
 
   /**
    *
-   * @param position
+   * @param {Position} position
    */
   showContextMenu(position) {
     const menu = this.buildContextMenu()
@@ -20,9 +20,9 @@ export default class Base {
 
   /**
    *
-   * @param {{x: number, y: number}} position
+   * @param {Position} position
    * @param contextMenu
-   * @return {{x: number, y: number}}
+   * @return {Position}
    */
   static calculateContextMenuPosition(position, contextMenu) {
     const result = {}

@@ -1,0 +1,10 @@
+{
+  "name": "core",
+  "id": "ide.core.core",
+  "author": {
+    "name": "Isaac Liu"
+  },
+  "version": "1.0.0",
+  "dependencies": {
+  }
+}

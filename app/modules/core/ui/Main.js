@@ -7,8 +7,9 @@ import MockComponentInspector from './MockComponentInspector'
 
 import {ContextMenu, ContextMenuItem} from '../../menu/ui/index'
 import {showContextMenu, hideContextMenu} from '../../menu/reducer/actions'
-import type {Position} from '../../base/types/position'
+import type {Position} from '../../base/types/base'
 import type {MenuStateType} from '../../menu/reducer/index'
+import Toolbar from '../../base/ui/Toolbar';
 
 const { ipcRenderer } = require('electron')
 const fs = require('fs')
@@ -407,7 +408,10 @@ class Main extends React.Component<Props> {
   }
 
   // closes any open dialogs, handles clicks on anywhere besides the active open menu/form
-  closeOpenDialogs = () => {
+  closeOpenDialogs = (event) => {
+    console.log(411, event)
+    event.preventDefault()
+    event.stopPropagation()
     const {selectedItem} = this.state
     selectedItem.focused = false
 
@@ -428,13 +432,13 @@ class Main extends React.Component<Props> {
   render() {
     const {openMenuId, createMenuInfo, fileTree, selectedItem} = this.state
     const {menu = {}} = this.props
-    console.log(431, menu)
     const {show, position} = menu
-    console.log(position)
     return (
       <ride-workspace className="scrollbars-visible-always" onClick={this.closeOpenDialogs}>
 
-        <ride-panel-container className="header" />
+        <ride-panel-container className="header">
+          <Toolbar icons={[]}/>
+        </ride-panel-container>
 
         <ride-pane-container>
           <ride-pane-axis className="horizontal">
