@@ -2,7 +2,6 @@ import React from 'react'
 import {connect} from 'react-redux'
 import FileTree from '../../file/ui/FileTree'
 import TextEditorPane from '../../editor/ui/TextEditorPane'
-import DeletePrompt from '../../file/ui/DeletePrompt'
 import MockComponentTree from './MockComponentTree'
 import MockComponentInspector from './MockComponentInspector'
 
@@ -19,15 +18,14 @@ const { File, Directory } = require('../../file/item-schema')
 
 type Props = {
   menu?: MenuStateType,
-  showContextMenu?: (Position) => void,
+  showContextMenu?: (position: Position) => void,
   hideContextMenu?: () => void
 }
 
 /**
  * @class App
  */
-@connect(({menu}) => ({menu}), {showContextMenu, hideContextMenu})
-export default  class Main extends React.Component<Props> {
+class Main extends React.Component<Props> {
   constructor() {
     super()
     this.state = {
@@ -405,7 +403,6 @@ export default  class Main extends React.Component<Props> {
     event.stopPropagation()
     console.log(event.pageX, event.pageY, file)
     const position = {x: event.pageX, y: event.pageY}
-    this.setState({contextMenuPosition: position})
     this.props.showContextMenu(position)
   }
 
@@ -415,6 +412,8 @@ export default  class Main extends React.Component<Props> {
     selectedItem.focused = false
 
     document.body.onkeydown = () => {}
+    this.props.hideContextMenu()
+
     this.setState({
       openMenuId: null,
       createMenuInfo: {
@@ -427,10 +426,11 @@ export default  class Main extends React.Component<Props> {
   }
 
   render() {
-    const {openMenuId, createMenuInfo, fileTree, selectedItem, renameFlag, deletePromptOpen, contextMenuPosition} = this.state
+    const {openMenuId, createMenuInfo, fileTree, selectedItem} = this.state
     const {menu = {}} = this.props
-    const {show} = menu
-
+    console.log(431, menu)
+    const {show, position} = menu
+    console.log(position)
     return (
       <ride-workspace className="scrollbars-visible-always" onClick={this.closeOpenDialogs}>
 
@@ -450,16 +450,8 @@ export default  class Main extends React.Component<Props> {
                 fileTree={fileTree}
                 selectedItem={selectedItem}
                 clickHandler={this.clickHandler}
-                renameFlag={renameFlag}
-                renameHandler={this.renameHandler}
                 contextMenuHandler={this.contextMenuHandler}
               />
-              {deletePromptOpen
-                ? <DeletePrompt
-                  deletePromptHandler={this.deletePromptHandler}
-                  name={path.basename(selectedItem.path)}
-                />
-                : <span />}
 
               <MockComponentTree />
 
@@ -485,7 +477,7 @@ export default  class Main extends React.Component<Props> {
           </ride-pane-axis>
         </ride-pane-container>
 
-        {show && <ContextMenu position={contextMenuPosition}>
+        {show && <ContextMenu position={position}>
           <ContextMenuItem name="New File" shortcut="Ctrl+N" />
           <ContextMenuItem name="New Folder" shortcut="Ctrl+N" />
           <ContextMenuItem splitter />
@@ -496,3 +488,5 @@ export default  class Main extends React.Component<Props> {
     )
   }
 }
+
+export default connect(({menu}) => ({menu}), {showContextMenu, hideContextMenu})(Main)

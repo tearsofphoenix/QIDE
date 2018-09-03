@@ -28,7 +28,6 @@ export default class Tree extends Component<Props> {
 
   componentWillReceiveProps(nextProps) {
     const {collapse, dirtyTreeID, id} = nextProps
-    console.log(32, dirtyTreeID, collapse, id)
     if (dirtyTreeID === id) {
       this.setState({collapse, dirtyTreeID, timestamp: Date.now()})
     } else {
@@ -64,7 +63,6 @@ export default class Tree extends Component<Props> {
         }
       </ul>)
 
-      console.log(55, id, nodes.length, collapse, children)
       checked = true
     }
     if (typeof label === 'string') {

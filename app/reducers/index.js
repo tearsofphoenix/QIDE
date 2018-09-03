@@ -9,6 +9,7 @@ const reducers = {
 
 menuModuleLoader({reducers})
 
+console.log(12, reducers)
 const rootReducer = combineReducers(reducers)
 
 export default rootReducer

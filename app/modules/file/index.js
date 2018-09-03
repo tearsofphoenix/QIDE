@@ -1,12 +1,7 @@
-const kTypeTemplate = {
+import reducer from './reducer'
+import {load} from '../base'
+import moduleInfo from './module.json'
 
-}
-
-/**
- *
- * @param template
- * @param {string[]} types
- */
-export function registerTemplateForTypes(template, types) {
-  types.forEach(looper => kTypeTemplate[looper] = template)
+export default function(ctx) {
+  load(moduleInfo, reducer, ctx)
 }

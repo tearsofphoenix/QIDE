@@ -15,6 +15,7 @@ const initState: MenuStateType = {
 export default function (state: ?MenuStateType = initState, action: Action) {
   switch (action.type) {
     case CONTEXTMENU_SHOW:
+      console.log(18, state, action)
       return {...state, show: true, position: action.payload}
     case CONTEXTMENU_HIDE:
       return {...state, show: false}

@@ -9,11 +9,6 @@ const FileTree = ({
   selectedItem,
   openCreateMenu,
   openMenuId,
-  createMenuInfo,
-  createMenuHandler,
-  createItem,
-  renameFlag,
-  renameHandler,
   contextMenuHandler
 }) => {
   if (fileTree) {
@@ -35,11 +30,6 @@ const FileTree = ({
                     selectedItem={selectedItem}
                     openCreateMenu={openCreateMenu}
                     openMenuId={openMenuId}
-                    createMenuInfo={createMenuInfo}
-                    createMenuHandler={createMenuHandler}
-                    createItem={createItem}
-                    renameFlag={renameFlag}
-                    renameHandler={renameHandler}
                     contextMenuHandler={contextMenuHandler}
                   />
                 </ul>
@@ -75,11 +65,6 @@ FileTree.propTypes = {
   selectedItem: PropTypes.object.isRequired,
   openCreateMenu: PropTypes.func.isRequired,
   openMenuId: PropTypes.number,
-  createMenuInfo: PropTypes.object,
-  createMenuHandler: PropTypes.func.isRequired,
-  createItem: PropTypes.func.isRequired,
-  renameFlag: PropTypes.bool.isRequired,
-  renameHandler: PropTypes.func.isRequired,
   contextMenuHandler: PropTypes.func.isRequired
 }
 
