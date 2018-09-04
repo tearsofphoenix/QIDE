@@ -1,6 +1,6 @@
 import React from 'react'
 
-import * as CTXMenuItem from './ContextMenuItem'
+import CTXMenuItem from './ContextMenuItem'
 
 export ContextMenuItem from './ContextMenuItem'
 

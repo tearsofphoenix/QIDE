@@ -1,5 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {menuForFileName} from '../../file/utils'
+import {buildMenu} from '../../menu/ui'
 import FileTree from '../../file/ui/FileTree'
 import TextEditorPane from '../../editor/ui/TextEditorPane'
 import MockComponentTree from './MockComponentTree'
@@ -9,7 +11,7 @@ import {ContextMenu, ContextMenuItem} from '../../menu/ui/index'
 import {showContextMenu, hideContextMenu} from '../../menu/reducer/actions'
 import type {Position} from '../../base/types/base'
 import type {MenuStateType} from '../../menu/reducer/index'
-import Toolbar from '../../base/ui/Toolbar';
+import Toolbar from '../../base/ui/Toolbar'
 
 const { ipcRenderer } = require('electron')
 const fs = require('fs')
@@ -402,9 +404,10 @@ class Main extends React.Component<Props> {
   contextMenuHandler = (event, file) => {
     event.preventDefault()
     event.stopPropagation()
-    console.log(event.pageX, event.pageY, file)
+
     const position = {x: event.pageX, y: event.pageY}
-    this.props.showContextMenu(position)
+    const menu = menuForFileName(file.name)
+    this.props.showContextMenu(position, menu, file)
   }
 
   // closes any open dialogs, handles clicks on anywhere besides the active open menu/form
@@ -429,7 +432,7 @@ class Main extends React.Component<Props> {
   render() {
     const {openMenuId, createMenuInfo, fileTree, selectedItem} = this.state
     const {menu = {}} = this.props
-    const {show, position} = menu
+    const {show, position, current} = menu
     return (
       <ride-workspace className="scrollbars-visible-always" onClick={this.closeOpenDialogs}>
 
@@ -479,10 +482,7 @@ class Main extends React.Component<Props> {
         </ride-pane-container>
 
         {show && <ContextMenu position={position}>
-          <ContextMenuItem name="New File" shortcut="Ctrl+N" />
-          <ContextMenuItem name="New Folder" shortcut="Ctrl+N" />
-          <ContextMenuItem splitter />
-          <ContextMenuItem name="New Folder" shortcut="Ctrl+N" />
+          {buildMenu(current)}
         </ContextMenu>}
 
       </ride-workspace>

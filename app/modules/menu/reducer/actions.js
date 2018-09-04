@@ -8,12 +8,13 @@ export const CONTEXTMENU_HIDE = 'CONTEXTMENU_HIDE'
 /**
  *
  * @param {Position} position
+ * @param {[]} current menu config
  * @return {Action}
  */
-export function showContextMenu(position: Position) {
+export function showContextMenu(position: Position, current, context) {
   return {
     type: CONTEXTMENU_SHOW,
-    payload: position
+    payload: {position, current, context}
   }
 }
 
