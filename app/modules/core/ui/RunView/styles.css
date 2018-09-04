@@ -1,0 +1,27 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 240px;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+.header {
+  height: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-top: 1px solid #1a1d23;
+  border-bottom: 1px solid #1a1d23;
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  background: #2b2b2b;
+  border-left: 1px solid #1a1d23;
+}

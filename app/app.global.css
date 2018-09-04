@@ -13,8 +13,7 @@ body {
   color: white;
   height: 100vh;
   background-color: #23272f;
-  font-family: Consolas, 'Noto Sans S Chinese Regular', Helvetica,
-    Helvetica Neue, serif !important;
+  font-family: Consolas, 'Noto Sans S Chinese Regular', Helvetica, Helvetica Neue, serif !important;
   overflow-y: hidden;
 }
 
@@ -70,6 +69,16 @@ a:hover {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.q-toolbar-footer .left {
+  display: flex;
+  align-items: center;
+  margin-left: 0.4em;
+}
+
+.q-cursor-default {
+  cursor: default;
+}
+
 .q-tab-active .title {
   border-bottom: 2px solid #2f65ca !important;
 }
@@ -91,4 +100,8 @@ header {
 .q-status-bar-item {
   margin-left: 0.4em;
   margin-right: 0.4em;
+}
+
+.q-border-bottom-none {
+  border-bottom: none !important;
 }

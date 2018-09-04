@@ -12,7 +12,9 @@ import 'codemirror/addon/search/searchcursor'
 import 'codemirror/mode/javascript/javascript'
 
 import fs from 'fs'
+import {post} from '../../event'
 import { guessModeFromFileName } from '../utils'
+import { kEventEditorCursorChanged } from '../../event/constants'
 
 require('../codemirror/qasm')
 
@@ -32,6 +34,7 @@ export default class TextEditor extends React.PureComponent<Props> {
     cm.setValue(file)
     cm.on('cursorActivity', (arg) => {
       console.log(arg, cm.getCursor())
+      post(kEventEditorCursorChanged, cm.getCursor())
     })
     addEditorInstance(cm, id)
   }

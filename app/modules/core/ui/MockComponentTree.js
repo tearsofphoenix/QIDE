@@ -79,7 +79,7 @@ export default class MockComponentTree extends Component {
   render() {
     const {data} = this.state
     return (
-      <div className="item-views">
+      <div className="item-views q-border-bottom-none">
         <div className="styleguide pane-item">
           <header className="styleguide-header">
             <h5>Component Tree</h5>

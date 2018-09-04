@@ -12,6 +12,9 @@ import type {Position} from '../../base/types/base'
 import type {MenuStateType} from '../../menu/reducer'
 import Toolbar from '../../base/ui/Toolbar'
 import Statusbar from './Statusbar'
+import Footbar from './Footbar';
+import IconButton from '../../base/ui/IconButton';
+import RunView from './RunView';
 
 const { ipcRenderer } = require('electron')
 const fs = require('fs')
@@ -53,7 +56,8 @@ class Main extends React.Component<Props> {
       renameFlag: false,
       fileChangeType: null,
       deletePromptOpen: false,
-      newName: ''
+      newName: '',
+      currentFootTab: ''
     }
 
     this.fileTreeInit()
@@ -429,10 +433,26 @@ class Main extends React.Component<Props> {
     })
   }
 
+  handleRunTabClick = () => {
+    this.setState({currentFootTab: 'run'})
+  }
+
+  handleTODOTabClick = () => {
+    this.setState({currentFootTab: 'todo'})
+  }
+
+  handleTerminalTabClick = () => {
+    this.setState({currentFootTab: 'terminal'})
+  }
+
   render() {
-    const {openMenuId, createMenuInfo, fileTree, selectedItem} = this.state
+    const {openMenuId, createMenuInfo, fileTree, selectedItem, currentFootTab} = this.state
     const {menu = {}} = this.props
     const {show, position, current} = menu
+    const ibstyle = {
+      paddingLeft: '.5em',
+      paddingRight: '.5em'
+    }
     return (
       <ride-workspace className="scrollbars-visible-always" onClick={this.closeOpenDialogs}>
 
@@ -481,8 +501,21 @@ class Main extends React.Component<Props> {
           </ride-pane-axis>
         </ride-pane-container>
 
-        {/* status bar */}
+
         <ride-panel-container className="footer">
+          <RunView show={currentFootTab === 'run'} />
+        </ride-panel-container>
+        {/* footer bar */}
+        <ride-panel-container className="footer">
+          <Footbar>
+            <IconButton style={ibstyle} icon="play" label="4:Run" selected={currentFootTab === 'run'} onClick={this.handleRunTabClick} />
+            <IconButton style={ibstyle} icon="play" label="6:TODO" selected={currentFootTab === 'todo'} onClick={this.handleTODOTabClick} />
+            <IconButton style={ibstyle} icon="terminal" label="Terminal" selected={currentFootTab === 'terminal'} onClick={this.handleTerminalTabClick} />
+          </Footbar>
+        </ride-panel-container>
+
+        {/* status bar */}
+        <ride-panel-container className="status-bar">
           <Statusbar />
         </ride-panel-container>
 

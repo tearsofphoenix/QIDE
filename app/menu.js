@@ -1,11 +1,18 @@
 // @flow
-import { app, Menu, shell, dialog, BrowserWindow } from 'electron'
+import { app, Menu, ipcMain, shell, dialog, BrowserWindow } from 'electron'
+import {kIPCShowGotoLineDialog} from './modules/event/constants'
 
 export default class MenuBuilder {
   mainWindow: BrowserWindow
 
   constructor(mainWindow: BrowserWindow) {
     this.mainWindow = mainWindow
+
+    ipcMain.on(kIPCShowGotoLineDialog, this.showGotoLineDialog)
+  }
+
+  showGotoLineDialog = () => {
+    dialog.showMessageBox()
   }
 
   buildMenu() {

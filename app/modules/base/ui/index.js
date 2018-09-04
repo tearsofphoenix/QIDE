@@ -20,3 +20,5 @@ export Control from './Control'
 export Range from './Range'
 
 export Toolbar from './Toolbar'
+
+export IconButton from './IconButton'

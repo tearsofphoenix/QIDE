@@ -2,8 +2,42 @@ import {get} from '../base'
 import context from '../context'
 import {kAppStore} from '../context/constants'
 
-export function register() {
+const kEventPool = {}
 
+/**
+ * @param {string} eventID
+ * @param {function} callback
+ */
+export function register(eventID, callback) {
+  let pool = kEventPool[eventID]
+  if (!pool) {
+    pool = new Set()
+    kEventPool[eventID] = pool
+  }
+  pool.add(callback)
+}
+
+/**
+ *
+ * @param {string} eventID
+ */
+export function removeListener(eventID, callback) {
+  const pool = kEventPool[eventID]
+  if (pool) {
+    pool.delete(callback)
+  }
+}
+
+/**
+ *
+ * @param {string} eventID
+ * @param {[]} args
+ */
+export function post(eventID, ...args) {
+  const pool = kEventPool[eventID]
+  if (pool) {
+    pool.forEach(callback => callback(eventID, ...args))
+  }
 }
 
 /**
