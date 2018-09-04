@@ -65,6 +65,11 @@ a:hover {
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.q-toolbar-footer {
+  border-bottom: none !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
 .q-tab-active .title {
   border-bottom: 2px solid #2f65ca !important;
 }
@@ -76,4 +81,14 @@ a:hover {
 
 header {
   cursor: default;
+}
+
+.q-right {
+  display: flex;
+  align-items: center;
+}
+
+.q-status-bar-item {
+  margin-left: 0.4em;
+  margin-right: 0.4em;
 }

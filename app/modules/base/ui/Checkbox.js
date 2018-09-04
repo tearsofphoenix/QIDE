@@ -8,8 +8,6 @@ type Props = {
 
 export default class Checkbox extends PureComponent<Props> {
   handleOnChange = (e) => {
-    e.preventDefault()
-    e.stopPropagation()
     const {onChange} = this.props
     if(onChange) {
       onChange(e.target.checked)

@@ -1,17 +1,17 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {menuForFileName} from '../../file/utils'
-import {buildMenu} from '../../menu/ui'
+import {buildMenu, ContextMenu} from '../../menu/ui'
 import FileTree from '../../file/ui/FileTree'
 import TextEditorPane from '../../editor/ui/TextEditorPane'
 import MockComponentTree from './MockComponentTree'
 import MockComponentInspector from './MockComponentInspector'
 
-import {ContextMenu, ContextMenuItem} from '../../menu/ui/index'
 import {showContextMenu, hideContextMenu} from '../../menu/reducer/actions'
 import type {Position} from '../../base/types/base'
-import type {MenuStateType} from '../../menu/reducer/index'
+import type {MenuStateType} from '../../menu/reducer'
 import Toolbar from '../../base/ui/Toolbar'
+import Statusbar from './Statusbar'
 
 const { ipcRenderer } = require('electron')
 const fs = require('fs')
@@ -26,7 +26,7 @@ type Props = {
 }
 
 /**
- * @class App
+ * @class Main
  */
 class Main extends React.Component<Props> {
   constructor() {
@@ -480,6 +480,11 @@ class Main extends React.Component<Props> {
 
           </ride-pane-axis>
         </ride-pane-container>
+
+        {/* status bar */}
+        <ride-panel-container className="footer">
+          <Statusbar />
+        </ride-panel-container>
 
         {show && <ContextMenu position={position}>
           {buildMenu(current)}

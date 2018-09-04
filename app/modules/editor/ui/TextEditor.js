@@ -30,7 +30,9 @@ export default class TextEditor extends React.PureComponent<Props> {
     const cm = this.codemirror.getCodeMirror()
     cm.setSize('100%', '100%')
     cm.setValue(file)
-    console.log(32, id)
+    cm.on('cursorActivity', (arg) => {
+      console.log(arg, cm.getCursor())
+    })
     addEditorInstance(cm, id)
   }
 

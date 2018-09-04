@@ -18,3 +18,5 @@ export TextInput from './TextInput'
 export Control from './Control'
 
 export Range from './Range'
+
+export Toolbar from './Toolbar'

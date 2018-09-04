@@ -1,10 +1,9 @@
 /* eslint flowtype-errors/show-errors: 0 */
-import React from 'react'
-import App from './App'
+import React, {Fragment} from 'react'
 import CoreUI from './Main'
 
 export default () => (
-  <App>
+  <Fragment>
     <CoreUI />
-  </App>
+  </Fragment>
 )
