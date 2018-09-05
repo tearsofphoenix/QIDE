@@ -16,7 +16,9 @@ export default class IconButton extends PureComponent<Props> {
     const cls = `fa fa-${icon} q-cursor-default`
     let content = label
     if (typeof label === 'string') {
-      content = (<span style={{marginLeft: '.4em', fontWeight: 'normal'}}>{label}</span>)
+      content = (<div style={{marginLeft: '.4em', fontWeight: 'normal'}}>
+        <span className="q-control-text">{label}</span>
+      </div>)
     }
     const finalStyle = Object.assign({
       height: '100%',

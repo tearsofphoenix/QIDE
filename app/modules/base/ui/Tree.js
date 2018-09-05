@@ -36,8 +36,6 @@ export default class Tree extends Component<Props> {
   }
 
   handleOnClick = (event) => {
-    event.preventDefault()
-    event.stopPropagation()
     const {onClick} = this.props
     if (onClick) {
       onClick(this.props)

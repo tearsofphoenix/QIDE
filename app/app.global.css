@@ -17,6 +17,12 @@ body {
   overflow-y: hidden;
 }
 
+.q-control-text {
+  font-family: 'BlinkMacSystemFont', 'Lucida Grande', 'Segoe UI', Ubuntu, Cantarell, sans-serif;
+  font-size: 0.95em;
+  font-weight: bold;
+}
+
 #root {
   height: 100%;
 }
