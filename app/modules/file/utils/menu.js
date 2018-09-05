@@ -1,6 +1,6 @@
-import fs from 'fs'
-import {send} from '../../event'
+import {ipcRenderer} from 'electron'
 import context from '../../context'
+import {kIPCEventTokenizeCode} from "../../../shared/constants"
 
 export default function(fileName) {
   return [
@@ -9,9 +9,7 @@ export default function(fileName) {
       action: () => {
         const {getState} = context
         const current = getState('menu').context
-        console.log(11, current)
-        const content = fs.readFileSync(current.path, {encoding: 'utf8'})
-        send('ide.core.language', 'tokenize', content)
+        ipcRenderer.send(kIPCEventTokenizeCode, current.path)
       }
     }
   ]

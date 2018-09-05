@@ -88,4 +88,6 @@ app.on('ready', async () => {
 
   const menuBuilder = new MenuBuilder(mainWindow)
   menuBuilder.buildMenu()
+
+  require('./main/modules')({mainWindow})
 })

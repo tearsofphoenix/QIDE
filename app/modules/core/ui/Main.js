@@ -509,7 +509,7 @@ class Main extends React.Component<Props> {
         <ride-panel-container className="footer">
           <Footbar>
             <IconButton style={ibstyle} icon="play" label="4:Run" selected={currentFootTab === 'run'} onClick={this.handleRunTabClick} />
-            <IconButton style={ibstyle} icon="play" label="6:TODO" selected={currentFootTab === 'todo'} onClick={this.handleTODOTabClick} />
+            <IconButton style={ibstyle} icon="clipboard-list" label="6:TODO" selected={currentFootTab === 'todo'} onClick={this.handleTODOTabClick} />
             <IconButton style={ibstyle} icon="terminal" label="Terminal" selected={currentFootTab === 'terminal'} onClick={this.handleTerminalTabClick} />
           </Footbar>
         </ride-panel-container>
